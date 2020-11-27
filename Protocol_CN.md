@@ -161,7 +161,7 @@ Token合约不是销售合约的一部分。销售合约持有Token合约哈希�
 销售合约需要发行者返回输出的token数量和销售金额，并以下面的格式对价格进行签名。
 
 ```plain
- contractId(合约ID 32字节) buyerPKH(购买者的PKH 20字节) tokenAmount(输出的token数量 32字节)  sellerPKH(销售者的PKH 20字节) satoshiAmount(销售金额, 8字节)  
+ prevOutpoint(UTXO outpoint 36字节) contractId(合约ID 32字节) buyerPKH(购买者的PKH 20字节) tokenAmount(输出的token数量 32字节)  sellerPKH(销售者的PKH 20字节) satoshiAmount(销售金额, 8字节)  
 ```
 
 发行人在提供可用的Sale UTXO时控制最大可销售的Token数量，最小购买金额，最大购买金额，以及销售期间。

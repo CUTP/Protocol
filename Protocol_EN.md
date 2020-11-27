@@ -152,7 +152,7 @@ No support for without auth sales.
 The sales contract requires the publisher to return the number of Tokens outputted and the sales amount, and to sign the price in the following format.
 
 ```plain
- contractId(32bytes) buyerPKH(20bytes) tokenAmount(32bytes)  sellerPKH(20bytes) satoshiAmount( 8bytes)  
+ prevOutpoint(UTXO outpoint 36bytes) contractId(32bytes) buyerPKH(20bytes) tokenAmount(32bytes)  sellerPKH(20bytes) satoshiAmount( 8bytes)  
 ```
 
 The publisher controls the maximum number of tokens available for Sale UTXO, the minimum purchase amount, the maximum purchase amount, and the period of Sale.
