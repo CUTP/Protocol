@@ -118,7 +118,7 @@ If the witness API is not available, or if you are in a situation where you can 
 
 The holder of Token can be destroyed by calling the burn unlock function
 
-## Issuer and Withness
+## Issuer and Witness
 
 <img src="./images/image10.png" title="" alt="Image" width="524">
 
@@ -251,9 +251,9 @@ If authcount = 0, simply verify that the transaction’s input can be legally co
 
 If the authCount is greater than 0, the transaction number needs to be back checked
 
-### Withness Check
+### Witness Check
 
-After the Withness witness receives the authentication request, look up the corresponding UTXO at the outpoint position
+After the Witness witness receives the authentication request, look up the corresponding UTXO at the outpoint position
 
 If authCount = 0, simply verify that the transaction’s input can be legally constructed as Token UTXO
 
