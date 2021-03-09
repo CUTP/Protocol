@@ -1,6 +1,6 @@
-# CUTP - Controllable UTXO Token Protocol
+# CUP - Controllable UTXO Token Protocol
 
-CUTP is a controllable layer 1 UTXO Token protocol. The overall concept is shown below.
+CUP is a controllable layer 1 UTXO Token protocol. The overall concept is shown below.
 
 ![图片](./images/image01.png)
 
@@ -23,7 +23,7 @@ If there are any language errors or logic problems, please let us know.
 
 ---
 
-CUTP是一个可控的层一UTXO Token协议。
+CUP是一个可控的层一UTXO Token协议。
 
 每个不同的颜色输出是不同的合约。每个交易的输入和输出都有一个指向创世合约的contractId，最终形成一条交易链。
 
@@ -41,7 +41,7 @@ CUTP是一个可控的层一UTXO Token协议。
 
 如果有任何语言错误或者逻辑问题，请告知
 
-**Copyright (c) 2020 LI Long, ChainBow Co. Ltd.**
+**Copyright (c) 2020-2021 LI Long, ChainBow Co. Ltd.**
 
 **All rights reserved.**
 

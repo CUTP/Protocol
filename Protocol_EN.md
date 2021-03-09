@@ -1,10 +1,10 @@
-# CUTP - Controllable UTXO Token Protocol
+# CUP - Controllable UTXO Token Protocol
 
 > Draft for comments, all rights reserved, not authorized by the author, may not be published, copied, implemented, tested
 
 ## Summary
 
-CUTP is a controllable layer 1 UTXO Token protocol. The overall concept is shown below.
+CUP is a controllable layer 1 UTXO Token protocol. The overall concept is shown below.
 
 ![Image](./images/image01.png)
 
@@ -29,7 +29,7 @@ The Genesis contract holds the basic information about Token. The lock function 
 The data area for the Genesis contract is
 
 ```plain
- OP_RETURN prefix(CONTRACT_BRFC_ID 6bytes) name(utf8 string) symbol(utf8 string) issuer(utf8 string) domain(utf8 string) rule(int) decimals(int)
+ OP_RETURN name(utf8 string) symbol(utf8 string) issuer(utf8 string) domain(utf8 string) rule(int) decimals(int) suffix(CONTRACT_BRFC_ID 6bytes) 
 ```
 
 The data area format follows the bitcoin script standard.
@@ -47,7 +47,7 @@ The output is determined by the publisher, but make sure contractId isn’t modi
 Data area append
 
 ```plain
- OP_RETURN prefix(BATON_BRFC_ID 6bytes) contractId(32bytes)  
+ OP_RETURN contractId(32bytes) suffix(BATON_BRFC_ID 6bytes)
 ```
 
 The data area format follows the bitcoin script standard.
@@ -76,7 +76,7 @@ The prefix (prefix TOKEN 6 bytes) contractId (contract ID 32bytes) and the witne
 The data area for the Token contract is
 
 ```plain
- OP_RETURN authCount(1byte) ownerPkh(20bytes) tokenAmount(32bytes)
+ OP_RETURN tokenAmount(32bytes) authCount(1byte) ownerPkh( 20bytes) suffix(TOKEN_BRFC_ID 6bytes)
 ```
 
 The data area is concated with bytes.
@@ -271,6 +271,6 @@ Each contract is distinguished by a different BRFC ID. The Wallet and the witnes
 
 ## License
 
-**Copyright (c) 2020 LI Long, ChainBow Co. Ltd.**
+**Copyright (c) 2020-2021 LI Long, ChainBow Co. Ltd.**
 
 **All rights reserved.**

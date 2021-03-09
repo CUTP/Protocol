@@ -1,10 +1,10 @@
-# CUTP - Controllable UTXO Token Protocol
+# CUP - Controllable UTXO Token Protocol
 
 > 征求意见稿，版权所有，无作者授权，不得公开，复制，实现，测试
 
 ## 概要 Summary
 
-CUTP是一个可控的层一UTXO Token协议。整体概念图如下所示。
+CUP是一个可控的层一UTXO Token协议。整体概念图如下所示。
 
 ![图片](./images/image01.png)
 
@@ -29,16 +29,16 @@ CUTP是一个可控的层一UTXO Token协议。整体概念图如下所示。
 创世合约的数据区为
 
 ```plain
- OP_RETURN prefix(前缀CONTRACT_BRFC_ID 6字节) name(名称 utf8字符串) symbol(标示 utf8字符串) issuer(发行商 utf8字符串) domain(发行者域名 utf8字符串) rule(规则 数字) decimals(小数位数 数字)
+ OP_RETURN name(名称 utf字符串) symbol(标示 utf8字符串) issuer(发行商 utf8字符串) domain(发行者域名 utf8字符串) rule(规则 数字) decimals(小数位数 数字) suffix(后缀CONTRACT_BRFC_ID 6字节)
 ```
 
-1. prefix(CONTRACT_BRFC_ID 6 bytes) 
-2. name(utf8 string) 
-3. symbol(utf8 string)
-4. issuer(utf8 string) 
-5. domain(utf8 string) 
-6. rule(int) 
-7. decimals(int)
+1. name(名称 utf字符串) 
+1. symbol(标示 utf8字符串)
+1. issuer(发行商 utf8字符串) 
+1. domain(发行者域名 utf8字符串) 
+1. rule(规则 数字) 
+1. decimals(小数位数 数字)
+1. suffix(后缀CONTRACT_BRFC_ID 6字节)
 
 数据区格式遵循比特币脚本标准。
 
@@ -52,14 +52,19 @@ Baton合约只有一个，每次花费都应该创建一个新的。需要发行
 
 输出由发行者决定，但要严格保障contractId没有被修改。
 
+常量
+1. contractId(合约ID 32字节) 
+1. witnesses(见证人数据 4个bigint) 
+
 随后的数据区附加
 
 ```plain
- OP_RETURN prefix(前缀BATON_BRFC_ID 6字节) contractId(合约ID 32字节)  
+ OP_RETURN supply(本次发行的token数量) issuerPKH(发行者公钥哈希) suffix(后缀BATON_BRFC_ID 6字节) 
 ```
 
-1. prefix(BATON_BRFC_ID 6字节)
-2. contractId(ID 32字节)
+1. supply(本次发行的token数量)
+1. issuerPKH(发行者公钥哈希)
+1. suffix(后缀BATON_BRFC_ID 6字节) 
 
 数据区格式遵循比特币脚本标准。
 
@@ -83,10 +88,15 @@ Token合约由Baton或者Sale，Swap合约创建，Token的拥有者可以进行
 
 在构造时需提供 prefix(前缀TOKEN_BRFC_ID 6字节) contractId(合约Id 32bytes) 和见证人Rabin公钥。
 
+常量
+1. contractId: 合约ID 32字节
+1. witnesses: 见证人数据 4个bigint 
+1. maxAuthCount: 最大的认证计数
+
 Token合约的数据区为
 
 ```plain
- OP_RETURN authCount(认证计数 1byte) ownerPkh(持有者公钥哈希 20bytes) tokenAmount(数量 32bytes)
+ OP_RETURN tokenAmount(数量 32bytes) authCount(认证计数 1byte) ownerPkh(持有者公钥哈希 20bytes) suffix(后缀TOKEN_BRFC_ID 6字节) 
 ```
 
 数据区格式为字节数组的链接形式。
@@ -276,6 +286,6 @@ Witness见证人收到认证请求后，查看对应的outpoint所在的UTXO。
 
 ## 版权 License
 
-**Copyright (c) 2020 LI Long, ChainBow Co. Ltd.**
+**Copyright (c) 2020-2021 LI Long, ChainBow Co. Ltd.**
 
 **All rights reserved.**
